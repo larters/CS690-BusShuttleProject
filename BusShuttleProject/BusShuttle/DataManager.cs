@@ -83,6 +83,22 @@ public class DataManager {
         SynchronizeStops();
     }
 
+    public void AddDriver(Driver driver) {
+        Drivers.Add(driver);
+        SynchronizeDrivers();
+    }
+
+    public void RemoveDriver(Driver driver) {
+        Drivers.Remove(driver);
+        SynchronizeDrivers();
+    }
+    public void SynchronizeDrivers() {
+        File.Delete("drivers.txt");
+        foreach(var driver in Drivers) {
+            File.AppendAllText("drivers.txt",driver.Name+Environment.NewLine);
+        }
+    }
+
     public void RemoveStop(Stop stop) {
         Stops.Remove(stop);
         SynchronizeStops();
