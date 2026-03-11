@@ -32,8 +32,17 @@ public class DataManager {
         Loops[0].Stops.Add(Stops[4]);
 
         Drivers = new List<Driver>();
-        Drivers.Add(new Driver("Huseyin Ergin"));
-        Drivers.Add(new Driver("Jane Doe"));
+
+
+
+        var driversFileContent = File.ReadAllLines("drivers.txt");
+
+        foreach(var driverName in driversFileContent) {
+            Drivers.Add(new Driver(driverName));
+        }
+
+        //Drivers.Add(new Driver("Huseyin Ergin"));
+        //Drivers.Add(new Driver("Jane Doe"));
 
         PassengerData = new List<PassengerData>();
 
